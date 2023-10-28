@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:news_app/Components/horizontal_grid.dart';
 import 'package:news_app/Components/search_tags.dart';
 import 'package:news_app/Components/short_for_you.dart';
-
 import '../Components/styles.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -21,14 +20,19 @@ class MyHomePage extends StatelessWidget {
           children: [
             Row(
               children: [
-                Container(
-                  height: 55,
-                  width: 51,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(kBorderRadius),
-                    color: kLightBlue,
-                    image: const DecorationImage(
-                      image: AssetImage('assets/image/profile.jpg'),
+                GestureDetector( // Wrap with GestureDetector
+                  onTap: () {
+                    Navigator.pushNamed(context, '/profile_screen');
+                  },
+                  child: Container(
+                    height: 55,
+                    width: 51,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(kBorderRadius),
+                      color: kLightBlue,
+                      image: const DecorationImage(
+                        image: AssetImage('assets/image/profile.jpg'),
+                      ),
                     ),
                   ),
                 ),
@@ -43,13 +47,13 @@ class MyHomePage extends StatelessWidget {
                       'Welcome Back',
                       style: kPoppinsBold.copyWith(
                         fontSize: 20,
-                      )
+                      ),
                     ),
                     Text(
                       'Monday, 31 October',
                       style: kPoppinsRegular.copyWith(
                         color: kGrey,
-                        fontSize: 16, 
+                        fontSize: 16,
                       ),
                     ),
                   ],
@@ -66,11 +70,11 @@ class MyHomePage extends StatelessWidget {
                 boxShadow: [
                   BoxShadow(
                     color: kDarkBlue.withOpacity(0.051),
-                     offset: const Offset(0.0, 3.0),
-                     blurRadius: 24.0,
-                     spreadRadius: 0.0,
-                  )
-                ]
+                    offset: const Offset(0.0, 3.0),
+                    blurRadius: 24.0,
+                    spreadRadius: 0.0,
+                  ),
+                ],
               ),
               child: Row(
                 children: [
@@ -80,34 +84,34 @@ class MyHomePage extends StatelessWidget {
                         color: kBlue,
                         fontSize: 16,
                       ),
-                       controller: TextEditingController(),
-                       decoration:  InputDecoration(
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 13,
+                      controller: TextEditingController(),
+                      decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 13,
+                        ),
+                        hintText: 'Search for article...',
+                        border: kBorder,
+                        errorBorder: kBorder,
+                        disabledBorder: kBorder,
+                        focusedBorder: kBorder,
+                        focusedErrorBorder: kBorder,
+                        hintStyle: kPoppinsRegular.copyWith(
+                          color: kLightGrey,
+                          fontSize: 12,
+                        ),
                       ),
-                      hintText: 'Search for article...',
-                      border: kBorder,
-                      errorBorder: kBorder,
-                      disabledBorder: kBorder,
-                      focusedBorder: kBorder,
-                      focusedErrorBorder: kBorder,
-                      hintStyle: kPoppinsRegular.copyWith(
-                        color: kLightGrey,
-                        fontSize: 12,
                     ),
-                  )
-                  )
                   ),
                   Container(
-                     decoration: BoxDecoration(
-                    color: kBlue,
-                    borderRadius: BorderRadius.circular(kBorderRadius),
-                  ),
-                  child: IconButton(
-                    onPressed: (){},
-                    icon: SvgPicture.asset('assets/search_icon.svg')
+                    decoration: BoxDecoration(
+                      color: kBlue,
+                      borderRadius: BorderRadius.circular(kBorderRadius),
                     ),
-                  )
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: SvgPicture.asset('assets/search_icon.svg'),
+                    ),
+                  ),
                 ],
               ),
             ),

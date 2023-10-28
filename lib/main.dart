@@ -4,6 +4,9 @@ import 'package:news_app/screens/my_home_page.dart';
 import 'package:news_app/Components/styles.dart'; // Make sure to provide the correct path
 import 'package:news_app/screens/news_detail.dart';
 
+import 'screens/profile_screen.dart';
+
+
 void main() {
   runApp(const MyApp());
 }
@@ -20,8 +23,8 @@ class _MyAppState extends State<MyApp> {
   final List<Widget> _pages = [
     const MyHomePage(),
     const NewsDetail(),
-    // const MyProfile(),
-    // const MyProfile(),
+    const ProfileScreen(),
+   
   ];
 
   void _onItemTapped(int index) {
@@ -34,7 +37,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-        // '/profile': (context) => const MyProfile(),
+       '/profile_screen': (context) => const ProfileScreen(),
         '/news_detail': (context) => const NewsDetail(),
         '/my_home_page': (context) => const MyHomePage(),
       },

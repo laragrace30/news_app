@@ -27,7 +27,7 @@ class DestinationList {
       profileImage: 'assets/image/Vector1.png',
     ),
     Destination(
-      image: 'assets/image/Vector2.png',
+      image: 'assets/image/Vector2.jpg',
       title: 'Hong Kong wins over Wall Street CEOs after lifting strict ',
       author: 'Pan Bong',
       date: 'Jan 3, 2023',

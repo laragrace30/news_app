@@ -20,9 +20,9 @@ class HorizontalGrid extends StatelessWidget {
           final cardData = cardList.cardList[index];
           return Padding(
             padding: const EdgeInsets.only(left: 5),
-            child: InkWell(
+            child: GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/news');
+                Navigator.pushNamed(context, '/news_detail');
               },
               child: Card(
                 shape: RoundedRectangleBorder(
@@ -84,7 +84,9 @@ class HorizontalGrid extends StatelessWidget {
                             ),
                           ),
                           trailing: GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.pushNamed(context, '/news_detail');
+                            },
                             child: Container(
                               padding: const EdgeInsets.all(10),
                               width: 45,

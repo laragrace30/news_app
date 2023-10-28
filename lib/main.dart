@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:news_app/screens/my_home_page.dart';
-import 'Components/styles.dart';
+import 'package:news_app/Components/styles.dart'; // Make sure to provide the correct path
+import 'package:news_app/screens/news_detail.dart';
 
 void main() {
-  runApp(
-    const MyApp(),
-  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp ({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
+  final List<Widget> _pages = [
+    const MyHomePage(),
+    const NewsDetail(),
+    // const MyProfile(),
+    // const MyProfile(),
+  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -28,10 +33,15 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        // '/profile': (context) => const MyProfile(),
+        '/news_detail': (context) => const NewsDetail(),
+        '/my_home_page': (context) => const MyHomePage(),
+      },
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: kLighterWhite,
-        body: const MyHomePage(),
+        body: _pages[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
           elevation: 0,
           type: BottomNavigationBarType.fixed,
@@ -69,5 +79,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-
-

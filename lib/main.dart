@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:news_app/screens/my_home_page.dart';
-import 'package:news_app/Components/styles.dart'; // Make sure to provide the correct path
+import 'package:news_app/Components/styles.dart'; 
 import 'package:news_app/screens/news_detail.dart';
 
 import 'screens/profile_screen.dart';

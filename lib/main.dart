@@ -33,14 +33,20 @@ class _MyAppState extends State<MyApp> {
         selectedIndex: _selectedIndex,
         onItemTapped: _onItemTapped,
       ),
-      const NewsDetail(),
+      NewsDetail(
+          selectedIndex: _selectedIndex,
+          onItemTapped: _onItemTapped,
+        ),
       const ProfileScreen(),
     ];
 
     return MaterialApp(
       routes: {
         '/profile_screen': (context) => const ProfileScreen(),
-        '/news_detail': (context) => const NewsDetail(),
+        '/news_detail': (context) => NewsDetail(
+                                      selectedIndex: _selectedIndex,
+                                      onItemTapped: _onItemTapped,
+                                    ),
         '/my_home_page': (context) => MyHomePage(
                                       selectedIndex: _selectedIndex,
                                       onItemTapped: _onItemTapped,

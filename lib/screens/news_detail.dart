@@ -6,9 +6,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/models/carousel_list.dart';
 
 import '../Components/buttons.dart';
+import '../Components/nav_bar.dart';
 
 class NewsDetail extends StatefulWidget {
-  const NewsDetail({Key? key}) : super(key: key);
+  const NewsDetail({Key? key, required this.selectedIndex, required this.onItemTapped}) : super(key: key);
+
+  final int selectedIndex;
+  final void Function(int) onItemTapped;
 
   @override
   _NewsDetailState createState() => _NewsDetailState();
@@ -165,6 +169,9 @@ class _NewsDetailState extends State<NewsDetail> {
           ),
         ],
       ),
+       bottomNavigationBar: NavBar(
+        selectedIndex: widget.selectedIndex,
+        onItemTapped: widget.onItemTapped,),
     );
   }
 

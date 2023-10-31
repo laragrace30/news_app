@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:news_app/screens/my_home_page.dart';
-import 'package:news_app/Components/styles.dart'; 
 import 'package:news_app/screens/news_detail.dart';
+import 'package:news_app/screens/profile_screen.dart';
 
-import 'screens/profile_screen.dart';
-
+import 'Components/nav_bar.dart';
+import 'Components/styles.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,12 +19,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
-  final List<Widget> _pages = [
-    const MyHomePage(),
-    const NewsDetail(),
-    const ProfileScreen(),
-   
-  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -35,48 +28,31 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> pages = [
+      MyHomePage(
+        selectedIndex: _selectedIndex,
+        onItemTapped: _onItemTapped,
+      ),
+      const NewsDetail(),
+      const ProfileScreen(),
+    ];
+
     return MaterialApp(
       routes: {
-       '/profile_screen': (context) => const ProfileScreen(),
+        '/profile_screen': (context) => const ProfileScreen(),
         '/news_detail': (context) => const NewsDetail(),
-        '/my_home_page': (context) => const MyHomePage(),
+        '/my_home_page': (context) => MyHomePage(
+                                      selectedIndex: _selectedIndex,
+                                      onItemTapped: _onItemTapped,
+                                    ),
       },
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: kLighterWhite,
-        body: _pages[_selectedIndex],
-        bottomNavigationBar: BottomNavigationBar(
-          elevation: 0,
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: kWhite,
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: _selectedIndex == 0
-                  ? SvgPicture.asset('assets/home_selected_icon.svg')
-                  : SvgPicture.asset('assets/home_unselected_icon.svg'),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: _selectedIndex == 1
-                  ? SvgPicture.asset('assets/bookmark_selected_icon.svg')
-                  : SvgPicture.asset('assets/bookmark_unselected_icon.svg'),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: _selectedIndex == 2
-                  ? SvgPicture.asset('assets/notification_selected_icon.svg')
-                  : SvgPicture.asset('assets/notification_unselected_icon.svg'),
-              label: '',
-            ),
-            BottomNavigationBarItem(
-              icon: _selectedIndex == 3
-                  ? SvgPicture.asset('assets/profile_selected_icon.svg')
-                  : SvgPicture.asset('assets/profile_unselected_icon.svg'),
-              label: '',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
+        backgroundColor: kLighterWhite, 
+        body: pages[_selectedIndex],
+        bottomNavigationBar: NavBar(
+          selectedIndex: _selectedIndex,
+          onItemTapped: _onItemTapped,
         ),
       ),
     );

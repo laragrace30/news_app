@@ -3,10 +3,16 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:news_app/Components/horizontal_grid.dart';
 import 'package:news_app/Components/search_tags.dart';
 import 'package:news_app/Components/short_for_you.dart';
+import '../Components/nav_bar.dart';
 import '../Components/styles.dart';
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage(
+      {Key? key, required this.selectedIndex, required this.onItemTapped})
+      : super(key: key);
+
+  final int selectedIndex;
+  final void Function(int) onItemTapped;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +26,7 @@ class MyHomePage extends StatelessWidget {
           children: [
             Row(
               children: [
-                GestureDetector( // Wrap with GestureDetector
+                GestureDetector(
                   onTap: () {
                     Navigator.pushNamed(context, '/profile_screen');
                   },
@@ -89,7 +95,7 @@ class MyHomePage extends StatelessWidget {
                         contentPadding: const EdgeInsets.symmetric(
                           horizontal: 13,
                         ),
-                        hintText: 'Search for article...',
+                        hintText: 'Search for an article...',
                         border: kBorder,
                         errorBorder: kBorder,
                         disabledBorder: kBorder,
@@ -129,6 +135,10 @@ class MyHomePage extends StatelessWidget {
             ShortForYou(),
           ],
         ),
+      ),
+      bottomNavigationBar: NavBar(
+        selectedIndex: selectedIndex,
+        onItemTapped: onItemTapped,
       ),
     );
   }

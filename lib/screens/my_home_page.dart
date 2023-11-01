@@ -3,16 +3,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:news_app/Components/horizontal_grid.dart';
 import 'package:news_app/Components/search_tags.dart';
 import 'package:news_app/Components/short_for_you.dart';
-import '../Components/nav_bar.dart';
 import '../Components/styles.dart';
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage(
-      {Key? key, required this.selectedIndex, required this.onItemTapped})
-      : super(key: key);
+  const MyHomePage({super.key});
 
-  final int selectedIndex;
-  final void Function(int) onItemTapped;
 
   @override
   Widget build(BuildContext context) {
@@ -26,19 +21,14 @@ class MyHomePage extends StatelessWidget {
           children: [
             Row(
               children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(context, '/profile_screen');
-                  },
-                  child: Container(
-                    height: 55,
-                    width: 51,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(kBorderRadius),
-                      color: kLightBlue,
-                      image: const DecorationImage(
-                        image: AssetImage('assets/image/profile.jpg'),
-                      ),
+                Container(
+                  height: 55,
+                  width: 51,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(kBorderRadius),
+                    color: kLightBlue,
+                    image: const DecorationImage(
+                      image: AssetImage('assets/image/profile.jpg'),
                     ),
                   ),
                 ),
@@ -135,10 +125,6 @@ class MyHomePage extends StatelessWidget {
             ShortForYou(),
           ],
         ),
-      ),
-      bottomNavigationBar: NavBar(
-        selectedIndex: selectedIndex,
-        onItemTapped: onItemTapped,
       ),
     );
   }

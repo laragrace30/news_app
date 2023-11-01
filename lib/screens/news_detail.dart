@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/models/carousel_list.dart';
-
 import '../Components/buttons.dart';
 import '../Components/nav_bar.dart';
 
 class NewsDetail extends StatefulWidget {
-  const NewsDetail({Key? key, required this.selectedIndex, required this.onItemTapped}) : super(key: key);
+  const NewsDetail({
+    Key? key,
+    required this.selectedIndex,
+    required this.onItemTapped,
+  }) : super(key: key);
 
   final int selectedIndex;
   final void Function(int) onItemTapped;
@@ -45,7 +47,7 @@ class _NewsDetailState extends State<NewsDetail> {
               autoPlay: false,
               initialPage: _current,
               height: MediaQuery.of(context).size.height / 1.9,
-              enableInfiniteScroll: false,
+              enableInfiniteScroll: true,
             ),
           ),
           const Align(
@@ -53,50 +55,55 @@ class _NewsDetailState extends State<NewsDetail> {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 50),
               child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Buttons(icons: 'assets/arrow_back_icon.svg'),
-                    Buttons(icons: 'assets/bookmark_white_icon.svg'),
-                  ]),
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Buttons(icons: 'assets/arrow_back_icon.svg'),
+                  Buttons(icons: 'assets/bookmark_white_icon.svg'),
+                ],
+              ),
             ),
           ),
-           Align(
+          Align(
             alignment: Alignment.center,
             child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                      onPressed: () {
-                        _controller.animateToPage(0,
-                            duration: const Duration(milliseconds: 500));
-                      },
-                      icon: SvgPicture.asset(
-                        _current == 0
-                            ? 'assets/carousel_indicator_enabled.svg'
-                            : 'assets/carousel_indicator_disabled.svg',
-                      )),
-                  IconButton(
-                      onPressed: () {
-                        _controller.animateToPage(1,
-                            duration: const Duration(milliseconds: 500));
-                      },
-                      icon: SvgPicture.asset(
-                        _current == 1
-                            ? 'assets/carousel_indicator_enabled.svg'
-                            : 'assets/carousel_indicator_disabled.svg',
-                      )),
-                  IconButton(
-                      onPressed: () {
-                        _controller.animateToPage(2,
-                            duration: const Duration(milliseconds: 500));
-                      },
-                      icon: SvgPicture.asset(
-                        _current == 2
-                            ? 'assets/carousel_indicator_enabled.svg'
-                            : 'assets/carousel_indicator_disabled.svg',
-                      )),
-                ]),
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    _controller.animateToPage(0,
+                        duration: const Duration(milliseconds: 500));
+                  },
+                  icon: SvgPicture.asset(
+                    _current == 0
+                        ? 'assets/carousel_indicator_enabled.svg'
+                        : 'assets/carousel_indicator_disabled.svg',
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    _controller.animateToPage(1,
+                        duration: const Duration(milliseconds: 500));
+                  },
+                  icon: SvgPicture.asset(
+                    _current == 1
+                        ? 'assets/carousel_indicator_enabled.svg'
+                        : 'assets/carousel_indicator_disabled.svg',
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    _controller.animateToPage(2,
+                        duration: const Duration(milliseconds: 500));
+                  },
+                  icon: SvgPicture.asset(
+                    _current == 2
+                        ? 'assets/carousel_indicator_enabled.svg'
+                        : 'assets/carousel_indicator_disabled.svg',
+                  ),
+                ),
+              ],
+            ),
           ),
           Positioned.fill(
             top: MediaQuery.of(context).size.height / 2.05,
@@ -139,9 +146,14 @@ class _NewsDetailState extends State<NewsDetail> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          CircleAvatar(
-                            backgroundImage: AssetImage(
-                                carouselList.cardList[_current].profileImage),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(context, '/profile_screen');
+                            },
+                            child: CircleAvatar(
+                              backgroundImage: AssetImage(
+                                  carouselList.cardList[_current].profileImage),
+                            ),
                           ),
                           const SizedBox(
                             width: 20,
@@ -169,9 +181,10 @@ class _NewsDetailState extends State<NewsDetail> {
           ),
         ],
       ),
-       bottomNavigationBar: NavBar(
+      bottomNavigationBar: NavBar(
         selectedIndex: widget.selectedIndex,
-        onItemTapped: widget.onItemTapped,),
+        onItemTapped: widget.onItemTapped,
+      ),
     );
   }
 

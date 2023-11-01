@@ -79,12 +79,12 @@ class ShortForYou extends StatelessWidget {
                     Container(
                       width: 70,
                       height: 70,
-                      padding: const EdgeInsets.all(12), // Adjust padding
+                      padding: const EdgeInsets.all(12), 
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(kBorderRadius),
                         image: DecorationImage(
                           scale: 0.2,
-                          image: AssetImage(item['image']), // Use AssetImage for local images
+                          image: AssetImage(item['image']), 
                         ),
                       ),
                       child: Transform.scale(

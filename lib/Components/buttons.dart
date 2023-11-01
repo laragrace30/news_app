@@ -1,39 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Buttons extends StatelessWidget {
   final String icons;
-
-  const Buttons({Key? key, required this.icons}) : super(key: key);
+  const Buttons({super.key, required this.icons});
 
   @override
   Widget build(BuildContext context) {
-    if (icons == 'bookmark') {
-      return Container(
-        width: 50,
-        decoration: BoxDecoration(
+    return Container(
+      width: 50,
+      decoration: BoxDecoration(
           border: Border.all(color: Colors.white),
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: IconButton(
-          icon: SvgPicture.asset('assets/bookmark_white_icon.svg'),
-          onPressed: null, 
-        ),
-      );
-    } else {
-      return Container(
-        width: 50,
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.white),
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: IconButton(
-          icon: SvgPicture.asset('assets/arrow_back_icon.svg'),
-          onPressed: () {
-            Navigator.pushNamed(context, '/my_home_page');
-          },
-        ),
-      );
-    }
+          borderRadius: BorderRadius.circular(16)),
+      child: IconButton(
+        icon: icons == 'assets/arrow_back_icon.svg'
+            ? SvgPicture.asset(icons)
+            : SvgPicture.asset(
+                icons,
+                //color: Colors.black, 
+              ),
+        onPressed: icons == 'assets/arrow_back_icon.svg'
+            ? () {
+                Navigator.pushNamed(context, '/my_home_page'); 
+              }
+            : null,
+      ),
+    );
   }
 }

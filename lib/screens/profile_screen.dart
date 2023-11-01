@@ -30,7 +30,7 @@ class ProfileScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       image: const DecorationImage(
                           fit: BoxFit.cover,
-                          image: AssetImage('assets/image/profile.jpg')),
+                          image: AssetImage('assets/image/Vector1.png')),
                       color: Colors.blueAccent,
                       borderRadius: BorderRadius.circular(16)),
                 ),
@@ -44,7 +44,7 @@ class ProfileScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Lara Grace Riconalla',
+                        'Sang Dong Min',
                         style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
                       ),
                       Text(
@@ -155,7 +155,7 @@ class ProfileScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            "Lara's Post",
+            "Dong Min's Post",
             style: GoogleFonts.poppins(
                 textStyle:
                     const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
@@ -178,7 +178,7 @@ class ProfileScreen extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          const Text('Popular from Lara'),
+          const Text('Popular from Dong Min'),
           const SizedBox(
             height: 20,
           ),

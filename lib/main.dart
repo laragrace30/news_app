@@ -29,10 +29,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> pages = [
-      MyHomePage(
-        selectedIndex: _selectedIndex,
-        onItemTapped: _onItemTapped,
-      ),
+      const MyHomePage(),
       NewsDetail(
           selectedIndex: _selectedIndex,
           onItemTapped: _onItemTapped,
@@ -47,10 +44,7 @@ class _MyAppState extends State<MyApp> {
                                       selectedIndex: _selectedIndex,
                                       onItemTapped: _onItemTapped,
                                     ),
-        '/my_home_page': (context) => MyHomePage(
-                                      selectedIndex: _selectedIndex,
-                                      onItemTapped: _onItemTapped,
-                                    ),
+        '/my_home_page': (context) => const MyHomePage(),
       },
       debugShowCheckedModeBanner: false,
       home: Scaffold(

@@ -17,7 +17,6 @@ class Buttons extends StatelessWidget {
             ? SvgPicture.asset(icons)
             : SvgPicture.asset(
                 icons,
-                //color: Colors.black, 
               ),
         onPressed: icons == 'assets/arrow_back_icon.svg'
             ? () {
